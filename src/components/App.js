@@ -4,19 +4,24 @@ import SearchBar from './SearchBar';
 import VideoList from './VideoList';
 import VideoDetail from './VideoDetail';
 import youtube from '../api/youtube';
-
 import './css/App.css';
 
+// Youtube Data API - Access Key
 const API_KEY = "";
 
 class App extends React.Component {
     state = { videos: [], selectedVideo: null }
 
-    // when user first loads in, the default video will be buildings
+    // DEF: Render components for fixed search videos -- 
     componentDidMount() {
         this.onTermSubmit('buildings');
     }
 
+    // DEF: This is the main function of the application
+    //      Sends a GET request to Youtube Datat API to return a list of videos
+    //      based on the search term entered by the user in the SearchBar component
+    //      This is an asychronous callback function -- will take time to execute
+    //      and return the list of videos
     onTermSubmit = async (term) => {
         const response = await youtube.get("/search", {
             params: {
@@ -28,16 +33,16 @@ class App extends React.Component {
             }
         })
         
-        // set the list of videos
-        // default to the first video returned as selectedVideo
+        // DEF: Update the component state once the response has completed
+        //      The selectedVideo is the first video returned from the search
         this.setState({
             videos: response.data.items,
             selectedVideo: response.data.items[0]
         })
     }
 
-    // A callback function invoked from VideoList -> VideoItem
-    // TODO: Pass this information down to the VideoDetail component
+    // DEF: Update the component state with the selected video from the VideoList component
+    //      This is a callback function passed down to VideoList and VideoDetail
     onVideoSelect = (video) => {
         this.setState({selectedVideo: video});
     }

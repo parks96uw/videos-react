@@ -4,7 +4,10 @@ import './SearchBar.css';
 class SearchBar extends React.Component {
     state = { term: '' }
 
-    // prevent form from submitting
+    // DEF: Prevent the form from submitting
+    //      Invokes the callback function -- onFormSubmit and passes back the 
+    //      term up to the parent component
+    //      This is a callback function
     onFormSubmit = (event) => {
         event.preventDefault();
 
@@ -12,6 +15,8 @@ class SearchBar extends React.Component {
         this.props.onFormSubmit(this.state.term);
     }
 
+    // DEF: Set the term to be the value passed in the onChange function
+    //      This is a callback function
     onInputChange = (event) => {
         this.setState({ term: event.target.value });
     }

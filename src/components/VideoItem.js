@@ -1,8 +1,8 @@
 import React from 'react';
-
 import './css/VideoItem.css';
 
-// deconstructing props object -- video and onVideoSelect
+// DEF: Deconstructing prop objects and declaring them video and onVideoSelect
+//      Clicking on a video will invoke a callback function defined in the App component
 const VideoItem = ({ video, onVideoSelect }) => {
     return (
         <div onClick={() => onVideoSelect(video)} className="video-item item">
