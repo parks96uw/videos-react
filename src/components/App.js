@@ -14,7 +14,7 @@ class App extends React.Component {
 
     // DEF: Render components for fixed search videos -- 
     componentDidMount() {
-        this.onTermSubmit('buildings');
+        this.onTermSubmit('faky');
     }
 
     // DEF: This is the main function of the application
@@ -28,7 +28,7 @@ class App extends React.Component {
                 q: term,
                 part: 'snippet',
                 type: 'video',
-                maxResults: 10,
+                maxResults: 5,
                 key: API_KEY
             }
         })
